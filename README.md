@@ -1,9 +1,9 @@
 # 班级主页管理系统
 # 技术参数：
 # 开发语言：
-前台：html + js+ css
-后台：python3 + django 2.0.3
-数据库:sqlite3
+前台：html + js+ css<br>
+后台：python3 + django 2.0.3<br>
+数据库:sqlite3<br>
 # 实现的功能图
 ![](https://raw.githubusercontent.com/imu-hupeng/ClassMate/master/images/1.png)
 ![](https://raw.githubusercontent.com/imu-hupeng/ClassMate/master/images/2.png)
