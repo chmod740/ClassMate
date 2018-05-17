@@ -1,6 +1,5 @@
 # 班级主页管理系统
 # 技术参数：
-# 开发语言：
 前台：html + js + css<br>
 后台：python3 + django 2.0.3<br>
 数据库:sqlite3（免安装，免驱动，即开即用）<br>
