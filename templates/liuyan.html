@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>内蒙古大学计算机学院2014级管工班</title>
+    <meta content="班级首页,班级网站模板1," name="description"/>
+    <meta content="班级首页,班级网站模板1" name="keywords"/>
+    <meta name="author" content="tuweia.cn">
+    <meta name="Copyright" content="tuweia.cn">
+    <meta name="viewport" id="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="apple-touch-icon" href=""/>
+    <script src="http://twcdn.okgo.top/js/jquery-1.9.1.js"></script>
+    <script src="http://twcdn.okgo.top/js/jquery.json-2.2.js"></script>
+    <script src="http://twcdn.okgo.top/js/common.js"></script>
+    <script>
+        var click = 'click',
+            customMode = false,
+            supportTouch = false;
+        if ("ontouchend" in document) {
+            supportTouch = true;
+            if (navigator.userAgent.indexOf('QQ') < 0) {
+                document.write('<script src="http://twcdn.okgo.top/js/vMouse.js"><\/script>');
+                click = 'vclick';
+            }
+            ;
+            $.fn.extend({
+                niceScroll: function () {
+                    $(this).css({
+                        '-webkit-overflow-scrolling': 'touch',
+                        'overflow': 'auto'
+                    });
+                },
+                getNiceScroll: function () {
+                    return ({
+                        hide: $.noop,
+                        show: $.noop,
+                        remove: $.noop,
+                        resize: $.noop
+                    });
+                }
+            });
+        }
+        ;
+        if ($.browser.msie && $.browser.version < 9) {
+            document.write('<script src="http://twcdn.okgo.top/js/modernizr.js"><\/script>');
+        }
+        ;
+        var imgErrorSrc = '/static/images/imgError_pic.png',
+            rpcJS = 'http://twcdn.okgo.top/js/phprpc.js',
+            staticPath = '/static',
+            youkuPlayerUrl = '/?c=custom&a=youkuPlayer&vid=',
+            siteAjaxURL = '/?c=siteAjax',
+            shareURL = 'http://api.bshare.cn/share/{shareTo}?url={url}&title=发现一个好东东，大家一起分享：',
+            loginForms = {"base": "\/c\/default\/a\/view\/ac\/account_signin"},
+            qrcodeApi = 'http://tuweia.cn/api/qrcode.php?level=H&size=15&data=';
+
+    </script>
+    <link href="/static/css/login.css" rel="stylesheet" type="text/css"/>
+    <script src="/static/js/tuweiaSite.js"></script>
+    <script src="http://twcdn.okgo.top/js/weixinLogin.js"></script>
+    <script>
+        var cartQuantity = 0;//购物车数量
+        var accountRpcURL = 'http://banji1.tuweia.cn/appliance/manage.php?mod=account&ac=rpc',
+            accountAjaxURL = 'http://banji1.tuweia.cn/appliance/manage.php?mod=account&ac=ajax';
+
+        function gotoSingnin() {
+            var html = '<div class="loginWindow">';
+            html += '<a href="javascript:void(0);" role="removeBox" class="loginWindow_close"><i class="icon-smallClose"></i></a>';
+            html += '<div class="loginWindow_list">';
+            html += '<a href="javascript:void(0);" role="baseLogin" data-href="' + loginForms.base + '" class="loginWindow_listIcon_1"><i></i><br><span></span>账户登录</a>';
+            if (loginForms.weixin) {
+                html += '<a href="javascript:void(0);" role="weixinLogin" class="loginWindow_listIcon_2"><i></i><br><span></span>微信登录</a>';
+            }
+            if (loginForms.qq) {
+                html += '<a href="javascript:void(0);" data-href="' + loginForms.qq + '" role="qqLogin" class="loginWindow_listIcon_3"><i></i><br><span></span>QQ登录</a>';
+            }
+            if (loginForms.sina) {
+                html += '<a href="javascript:void(0);" data-href="' + loginForms.sina + '" role="sinaLogin" class="loginWindow_listIcon_4"><i></i><br><span></span>微博登录</a>';
+            }
+            html += '</div>';
+            html += '<div class="loginWindow_foot"><a href="javascript:void(0);" data-href="/c/default/a/view/ac/account_signup" role="singup">还没有账号？立即注册</a></div>';
+            html += '</div>';
+            var obj = $(html),
+                oel = setOverlay(0.6);
+            obj.appendTo('body').delegate('a[role]', click, function (e) {
+                e.preventDefault();
+                $.cookie('signinBack', window.location.href, {path: '/', expires: 1});
+                switch ($(this).attr('role')) {
+                    case 'removeBox':
+                        oel.remove();
+                        obj.remove();
+                        break;
+                    case 'weixinLogin':
+                        obj.remove();
+                        oel.remove();
+                        weixinDefaultLogin();
+                        break;
+                    default:
+                        window.location.href = $(this).data('href');
+                        break;
+                }
+            });
+        }
+
+        function filterLogin() {
+            var e = arguments.callee.caller.arguments[0] || window.event;
+            var isLogin = 0;
+            if (isLogin == 0) {
+                e.preventDefault();
+                e.stopPropagation();
+                gotoSingnin();
+            }
+        }
+        ;
+
+    </script>
+    <link href="http://twcdn.okgo.top/css/webSite.css" rel="stylesheet" type="text/css"/>
+    <link href="http://twcdn.okgo.top/css/icon.css" rel="stylesheet" type="text/css"/>
+    <link href="http://twcdn.okgo.top/skin/hongse1/css/style.css" rel="stylesheet" type="text/css" id="skinLink"/>
+    <style>
+        #footer {
+            background-color: transparent;
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+
+        #el_14120434185298snp7 {
+            background-color: #F9F1B5;
+            padding-top: 2%;
+        }
+
+        #el_1412043418527b4ca6 {
+            max-width: 1024px;
+            background-color: #FD9C9C;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+
+        @media (min-width: 480px) and (max-width: 767px){#el_1412043418527b4ca6 {
+            padding-left:
+
+        0px
+
+        ;padding-right:
+
+        0px
+
+        ;
+        }
+
+        }
+        @media (max-width: 479px){#el_1412043418527b4ca6 {
+            padding-left:0px;padding-right:0px;
+        }
+
+        }
+        #app_E93043398029218129 {
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        @media (max-width: 479px){#app_E93043398029218129 {
+            padding-bottom:  20px  ;
+        }
+
+        }
+        @media (min-width: 480px) and (max-width: 767px){#app_E93043398029218129 {
+            padding-bottom:20px ;
+        }
+        }
+        #app_E93043400164814636 .con_body {
+            background-color: #FD9C9C;
+        }
+
+        #app_E93043400164814636 .con_body.selected {
+            background-color: #F48889;
+        }
+
+        #app_E93043400164814636 .con_body:hover {
+        }
+
+        #app_E93043400164814636 li a:hover {
+            background-color: #F48889;
+        }
+
+        #app_E93043400164814636 li a {
+            padding-top: 30px;
+            padding-bottom: 30px;
+            background-color: #FD9C9C;
+        }
+
+        #app_E93043400164814636 li a.selected {
+            background-color: #F48889;
+        }
+
+        @media (min-width: 480px) and (max-width: 767px){#app_E93043400164814636 li a {
+            padding-top: 0px;padding-bottom:0px;background-color:#F48889;}}
+        @media (max-width: 479px){#app_E93043400164814636 li a {
+            padding-top: 0px ;padding-bottom:0px;background-color:#F48889;
+        }}
+        #app_E93043400164814636 {
+            text-align: right;
+        }
+
+        #el_1412043363036eo731 {
+            max-width: 1024px;
+        }
+
+        #el_1412043474891189110 {
+            margin-top: 15px;
+        }
+
+        #el_1412043474892fhof11 {
+            max-width: 1024px;
+            background-color: #EDEDED;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        #el_1412044083679fguv16 {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 30px;
+        }
+
+        @media (min-width: 480px) and (max-width: 767px){#el_1412044083679fguv16 {
+            padding-left: 0px;padding-right:0px;
+        } }
+        @media (max-width: 479px){#el_1412044083679fguv16 {
+            padding-left:0px;padding-right:0px;
+        }
+
+        }
+        #app_E93044031499964281 .appTitle h2 {
+            color: #258FB9;
+            font-weight: bold;
+            font-size: 18px;
+            padding-bottom: 10px;
+        }
+
+        #app_E93044031499964281 .con_header {
+            border-bottom-style: dashed;
+            border-bottom-color: #258FB9;
+            border-bottom-width: 1px;
+        }
+
+        #app_E93044031499964281 .articleTitle {
+        }
+
+        #app_E93044031499964281 .articleTitle {
+            font-size: 14px;
+        }
+
+        #app_E93044031499964281 .articleTitle:hover {
+        }
+
+        #app_E93044031499964281 .articleTitle:hover a, #app_E93044031499964281 .articleTitle:hover a:link {
+            color: #258FB9;
+        }
+
+        #app_E93044031499964281 {
+            list-style-type: decimal;
+        }
+
+        #app_E93044031499964281 .articleList li {
+            list-style-type: decimal;
+        }
+
+        #app_E93044031499964281 .articleList li:hover {
+        }
+
+        #app_E93044031499964281 .articleList li:hover a, #app_E93044031499964281 .articleList li:hover a:link {
+            color: #258FB9;
+        }
+
+        #app_E93044031499964281 .articleText {
+            color: #656565;
+            font-size: 12px;
+        }
+
+        #app_E93044036527034766 a {
+            background-color: #258FB9;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            color: #ffffff;
+        }
+
+        #app_E93044036527034766 a a, #app_E93044036527034766 a a:link {
+            color: #ffffff;
+        }
+
+        #app_E93044036527034766 {
+            text-align: right;
+        }
+
+        #el_14120444329145bnw21 .appTitle h2 {
+            color: #DF5157;
+            font-weight: bold;
+            font-size: 18px;
+            padding-bottom: 10px;
+        }
+
+        #el_14120444329145bnw21 .con_header {
+            border-bottom-style: dashed;
+            border-bottom-color: #DF5157;
+            border-bottom-width: 1px;
+            border-top-color: #DF5157;
+            border-right-color: #DF5157;
+            border-left-color: #DF5157;
+        }
+
+        #el_14120444329145bnw21 .articleTitle {
+        }
+
+        #el_14120444329145bnw21 .articleTitle {
+            font-size: 14px;
+        }
+
+        #el_14120444329145bnw21 .articleTitle:hover {
+        }
+
+        #el_14120444329145bnw21 .articleTitle:hover a, #el_14120444329145bnw21 .articleTitle:hover a:link {
+            color: #DF5157;
+        }
+
+        #el_14120444329145bnw21 {
+            list-style-type: decimal;
+        }
+
+        #el_14120444329145bnw21 .articleList li {
+            list-style-type: decimal;
+        }
+
+        #el_14120444329145bnw21 .articleList li:hover {
+        }
+
+        #el_14120444329145bnw21 .articleList li:hover a, #el_14120444329145bnw21 .articleList li:hover a:link {
+            color: #DF5157;
+        }
+
+        #el_14120444329145bnw21 .articleText {
+            color: #656565;
+            font-size: 12px;
+        }
+
+        #el_14120446920682kf62 a {
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            color: #ffffff;
+            background-color: #DF5157;
+        }
+
+        #el_14120446920682kf62 a a, #el_14120446920682kf62 a a:link {
+            color: #ffffff;
+        }
+
+        #el_14120446920682kf62 {
+            text-align: right;
+        }
+
+        #el_14120444351133vi022 .appTitle h2 {
+            color: #D18F2F;
+            font-weight: bold;
+            font-size: 18px;
+            padding-bottom: 10px;
+        }
+
+        #el_14120444351133vi022 .con_header {
+            border-bottom-style: dashed;
+            border-bottom-color: #D18F2F;
+            border-bottom-width: 1px;
+            border-top-color: #D18F2F;
+            border-right-color: #D18F2F;
+            border-left-color: #D18F2F;
+        }
+
+        #el_14120444351133vi022 .articleTitle {
+        }
+
+        #el_14120444351133vi022 .articleTitle {
+            font-size: 14px;
+        }
+
+        #el_14120444351133vi022 .articleTitle:hover {
+        }
+
+        #el_14120444351133vi022 .articleTitle:hover a, #el_14120444351133vi022 .articleTitle:hover a:link {
+            color: #D18F2F;
+        }
+
+        #el_14120444351133vi022 {
+            list-style-type: decimal;
+        }
+
+        #el_14120444351133vi022 .articleList li {
+            list-style-type: decimal;
+        }
+
+        #el_14120444351133vi022 .articleList li:hover {
+        }
+
+        #el_14120444351133vi022 .articleList li:hover a, #el_14120444351133vi022 .articleList li:hover a:link {
+            color: #D18F2F;
+        }
+
+        #el_14120444351133vi022 .articleText {
+            color: #656565;
+            font-size: 12px;
+        }
+
+        @media (min-width: 768px) and (max-width: 960px){#el_14120444351133vi022.articleText {
+            overflow: hidden;
+            max-height: 35px;
+        }
+        }
+
+        #el_14120446949490fev3 {
+            text-align: right;
+        }
+
+        #el_14120446949490fev3 a {
+            background-color: #D18F2F;
+            color: #ffffff;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        #el_14120446949490fev3 a a, #el_14120446949490fev3 a a:link {
+            color: #ffffff;
+        }
+
+        #el_1412043480166py9k13 {
+            margin-bottom: 10px;
+        }
+
+        #el_14120434801667d9p12 {
+            max-width: 1024px;
+            background-color: #EDEDED;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        #app_E93043301998965982 {
+            color: #656565;
+            padding-left: 20px;
+        }
+
+        #app_E93043301998965982 a, #app_E93043301998965982 a:link {
+            color: #656565;
+        }
+
+        #app_E93043301998965982 {
+        }
+
+        #app_E93045212429517830 {
+            font-size: 12px;
+            color: #656565;
+            padding-left: 20px;
+        }                 </style>
+    <style>
+        img {
+            -webkit-transform: scale(1) rotate(0) translate3d(0, 0, 0);
+            transform: scale(1) rotate(0) translate3d(0, 0, 0);
+        }
+    </style>
+    <script>
+        {% if jump %}
+        alert("请先登录！");window.location.href="login.html";
+        {% endif %}
+        
+    </script>
+
+</head>
+<body id="body">
+
+
+<div id="ShowAD" style="position:absolute;z-index:100;">
+<div style="width:135px;height:18px;font-size:14px;font-weight:bold;text-align:left;cursor:hand;" onClick="closead();"><font color="ff0000">关闭广告</font></div>
+<br><img style="width: 170px" src="static/images/ad.gif"></a>
+</div>
+<script language="javascript">
+function closead()
+{
+    var adst = document.getElementById("ShowAD").style;
+    adst.display='none';
+}
+</script>
+
+
+<div id="layout" class="layout">
+    <div id="wrapper" class="wrapper" path="wrapper" static="root" data-del="false">
+        <div id="container" class="container" path="container" static="wrapper" data-del="false">
+            <header id="header" class="header" path="header" static="root" data-del="false">
+                <div id="headerWrapper" class="headerWrapper" path="wrapper" static="header" data-del="false">
+                    <div id="headerContainer" class="headerContainer" path="container" static="headerWrapper"
+                         data-del="false">
+                        <div id="el_14120434185298snp7" class="row" role="dragEl" path="row">
+                            <div id="el_14120434185298snp7_style" style="display:none;">
+
+                            </div>
+                            <div class="rowPatch">
+                                <div class="span12">
+                                    <div class="boxBlock">
+                                        <div id="el_1412043418527b4ca6" class="elementContainer" path="column">
+                                            <div id="el_1412043418527b4ca6_style" style="display:none;">
+
+                                            </div>
+                                            <div id="el_1412043436125ulgn9" class="row" role="dragEl" path="row">
+                                                <div class="rowPatch">
+                                                    <div class="span3">
+                                                        <div class="boxBlock">
+                                                            <div id="el_1412043436119xn4f8" class="elementContainer"
+                                                                 path="column">
+                                                                <div id="app_E93043398029218129_style" style="">
+                                                                    <h5 style="color: #ffffff">内蒙古大学计算机学院<BR>2014级管工班
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="appWrapper" data-events=''
+                                                                     data-content="json" path="app" role="dragEl"
+                                                                     id="app_E93043398029218129" data-appid="logo"
+                                                                     data-type="widget">
+                                                                    <div class="appMask">
+
+                                                                    </div>
+                                                                    <div class="appContent">
+                                                                        <div class="">
+                                                                            <div class="container">
+                                                                                <a href="/">
+                                                                                    <img src=""
+                                                                                         data-pc="http://file.tuweia.cn/M00/02/92/CoPea1QqEr2AQSXcAACzGgZtWL4887.png?imageMogr2/thumbnail/500x300%3E/quality/100"
+                                                                                         data-phone="http://file.tuweia.cn/M00/02/92/CoPea1QqEr2AQSXcAACzGgZtWL4887.png?imageMogr2/thumbnail/500x300%3E/quality/100"
+                                                                                         role="logo"
+                                                                                         style="display:none;"/>
+                                                                                </a>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="span9">
+                                                        <div class="boxBlock">
+                                                            <div id="el_1412043565245wpqy14" class="elementContainer"
+                                                                 path="column">
+                                                                <div id="app_E93043400164814636_style"
+                                                                     style="display:none;"></div>
+                                                                <div class="appWrapper" data-events=''
+                                                                     data-content="json" path="app" role="dragEl"
+                                                                     id="app_E93043400164814636" data-appid="nav"
+                                                                     data-type="widget">
+                                                                    <div class="appMask"></div>
+                                                                    <div class="appContent">
+                                                                        <div class="">
+                                                                            <div class="container">
+                                                                                <div class="navBar nav_1">
+                                                                                    <div class="con_body">
+                                                                                        <ul>
+                                                                                            <li class="selected "
+                                                                                                data-index="0"><a
+                                                                                                    href="index.html">班级首页</a>
+                                                                                            </li>
+
+                                                                                            <li class=" "
+                                                                                                data-index="3"><a
+                                                                                                    href="liuyan.html">留言板</a>
+                                                                                            </li>
+                                                                                            <li class=" "
+                                                                                                data-index="3"><a
+                                                                                                    href="tongxun.html">通讯录</a>
+                                                                                            </li>
+                                                                                            {% if username %}
+                                                                                            <li class=" "
+                                                                                                data-index="1"><a
+                                                                                                    href="#">欢迎您，{{ name }}</a>
+                                                                                            </li>
+                                                                                             <li class=" "
+                                                                                                data-index="1"><a
+                                                                                                    href="logout.html">注销</a>
+                                                                                            </li>
+                                                                                            {% else  %}
+                                                                                            <li class=" "
+                                                                                                data-index="1"><a
+                                                                                                    href="register.html">用户注册</a>
+                                                                                            </li>
+                                                                                            <li class=" "
+                                                                                                data-index="2"><a
+                                                                                                    href="login.html">用户登录</a>
+                                                                                            </li>
+                                                                                            {% endif %}
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div id="main" class="main" path="main" static="root" data-del="false">
+                <div id="mainWrapper" class="mainWrapper" path="wrapper" static="main" data-del="false">
+                    <div id="mainContainer" class="mainContainer" path="container" static="mainWrapper"
+                         data-del="false">
+                        <div id="el_1412043363037d4m62" class="row" role="dragEl" path="row">
+                            <div class="rowPatch">
+                                <div class="span12">
+                                    <div class="boxBlock">
+                                        <div id="el_1412043363036eo731" class="elementContainer" path="column">
+                                            <div id="el_1412043363036eo731_style" style="display:none;"></div>
+                                            <div class="appWrapper" role="dragEl" data-content="html" path="app"
+                                                 id="app_E93043973293284384" data-appid="image" data-type="element">
+                                                <div class="appMask"></div>
+                                                <div class="appContent">
+                                                    <a href="/c/default/pageId/542a202c2034da2e228b4573" target=""></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="el_1412043474891189110" class="row" role="dragEl" path="row">
+                            <div id="el_1412043474891189110_style" style="display:none;"></div>
+                            <div class="rowPatch">
+                                <div class="span12">
+                                    <div class="boxBlock">
+
+
+
+                                        <section id="intro">
+
+    <header>
+        <h2 style="text-align: center;">用户留言</h2>
+        <br>
+        <br>
+        <script>
+		/*
+		 * When the iframe is on a different subdomain, uncomment the following line
+		 * and change "example.com" to your domain.
+		 */
+		// document.domain = "example.com";
+		function setIframeHeight(iframe) {
+			if (iframe) {
+				var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+				if (iframeWin.document.body) {
+					iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+				}
+			}
+		};
+
+		window.onload = function () {
+			setIframeHeight(document.getElementById('external-frame'));
+		};
+	</script>
+        <div  class="input-group" align="center">
+                <iframe src="ly_detail.html" frameborder="0" scrolling="no" id="external-frame" onload="setIframeHeight(this)"></iframe><br>
+
+                <input type="text" style="height: 51px;width: 300px;" class="form-control" placeholder="留言" id="ly">
+                <br><br>
+                <button style="height: 51px;width: 300px;" type="button" onclick="check_register()">留言</button>
+        </div>
+    </header>
+	<section id="footer">
+        <div align="center">
+								<ul class="icons">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+								</ul>
+        </div>
+							</section>
+</section>
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer id="footer" class="footer" path="footer" static="root" data-del="false">
+                <div id="footerWrapper" class="footerWrapper" path="wrapper" static="footer" data-del="false">
+                    <div id="footerContainer" class="footerContainer" path="container" static="footerWrapper"
+                         data-del="false">
+                        <div id="el_1412043480166py9k13" class="row" role="dragEl" path="row">
+                            <div id="el_1412043480166py9k13_style" style="display:none;"></div>
+                            <div class="rowPatch">
+                                <div class="span12">
+                                    <div class="boxBlock">
+                                        <div id="el_14120434801667d9p12" class="elementContainer" path="column">
+                                            <div id="el_14120434801667d9p12_style" style="display:none;"></div>
+                                            <div id="app_E93043301998965982_style" style="display:none;"></div>
+                                            <div class="appWrapper" role="dragEl" data-content="html" path="app"
+                                                 id="app_E93045212429517830" data-appid="text" data-type="element">
+                                                <div class="appMask"></div>
+                                                <div id="app_E93045212429517830_style" style="display:none;"></div>
+                                                <div class="appContent">
+                                                    <div class="con_body">
+                                                        <div role="editor"><p>  <b>本站访问量：</b>{{access_time}} <b>次</b> <b>&nbsp;|&nbsp;</b> <b>友情链接</b> &nbsp; <a href="http://www.imu.edu.cn/">内蒙古大学</a>&nbsp;&nbsp; <a href="http://ccs.imu.edu.cn/">内大计算机学院</a> &nbsp;&nbsp; <a href="http://www.baidu.com/">百度</a> </p></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="appWrapper  hide_basic  " data-events='' data-content="json"
+                                                 path="app" role="dragEl" id="app_E93043301998965982"
+                                                 data-appid="copyright" data-type="widget">
+                                                <div class="appMask"></div>
+                                                <div class="appContent">
+                                                    <div class="">
+                                                        <div class="container">copyright© All Rights Reserved. <p><a
+                                                                href="http://tuweia.cn" target="_blank"
+                                                                title="突唯阿，领先的响应式网站自助建设平台，免费创建电脑、手机、平板通用的响应式网站">网站在突唯阿tuweia.cn创建</a>
+                                                        </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <script>
+                                                    ;(function ($) {
+                                                        var id = "app_E93043301998965982",
+                                                            $options = {
+                                                                "content": "copyright\u00a9 All Rights Reserved.",
+                                                                "styles": {"style": {"appContent": []}},
+                                                                "appTempId": "app_E93043301998965982",
+                                                                "pageId": "542a12232034da941e8b4567"
+                                                            };
+                                                        appInit(id, $options);
+                                                    })(jQuery);
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+<div style="display:none;">
+    <article>班级首页,班级网站模板1,</article>
+    <h1>
+        班级首页-班级网站模板1 </h1>
+    <h2>
+        班级首页,班级网站模板1 </h2>
+</div>
+
+<link href="/static/css/tools.css" rel="stylesheet" type="text/css"/>
+<script src="http://twcdn.okgo.top/js/tools.js"></script>
+<script>
+
+</script>
+<script type="text/javascript">
+ function check_register() {
+     var content = document.getElementById('ly').value;
+     if (content.length == 0  ){
+         alert('请将信息输入完整')
+         return;
+     }
+
+     $.ajax({
+            url: 'add_liuyan.html',
+            type: 'GET',
+            data: 'content=' + content ,
+            async: true,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (returndata) {
+                if (returndata.rst == 0){
+                    alert(returndata.msg )
+                    location.reload()
+
+                }else {
+                    alert(returndata.msg)
+                }
+            },
+            error: function (returndata) {
+                alert('请求发送失败');
+            }
+        });
+
+    };
+</script>
+<iframe src="http://tuweia.cn/sitecache.html" style="display:none;"></iframe>
+<script src="/static/js/jquery.traditional.js"></script>
+</body>
+</html>

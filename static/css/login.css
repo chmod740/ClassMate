@@ -1,0 +1,119 @@
+.loginWindow{
+        box-shadow:0 0 13px #999;
+        background:#fff;
+        position:fixed;
+        width:400px;
+        height:240px;
+        left:50%;
+        top:50%;
+        margin:-120px 0 0 -200px;
+        text-align:center;
+        z-index: 159999;
+}
+.loginWindow_list a{
+        display:inline-block;
+        margin:0 15px;
+        text-align:center;
+        color:#666;
+}
+.loginWindow_list a i{
+        width:50px;
+        height:50px;
+        border-radius:100%;
+        display:inline-block;
+        background-image:url(../images/loginShare.png);
+        background-size:206px 25px;
+        background-repeat:no-repeat;
+}
+.loginWindow_listIcon_1 i{
+        background-color:#83BA1F;
+        background-position:-169px 13px;
+}
+.loginWindow_listIcon_2 i{
+        background-color:#51B341;
+        background-position:-78px 13px;
+}
+.loginWindow_listIcon_3 i{
+        background-color:#4E9AC8;
+        background-position:-124px 13px;
+}
+.loginWindow_listIcon_4 i{
+        background-color:#D42C4C;
+        background-position:12px 13px;
+}
+.loginWindow_list{
+        padding:60px 0 0 0;
+}
+.loginWindow_foot{
+        text-align:center;
+        padding:50px 0 0 0;
+}	
+.loginWindow_foot a{
+        color:#999;
+        text-decoration:underline;	
+}
+.loginWindow_foot a:hover{
+        color:#333;
+}
+.loginWindow_close{
+        position:absolute;
+        width:30px;
+        height:30px;
+        border-radius:100%;
+        border:1px solid #eee;
+        line-height:26px;
+        text-align: center;
+        color:#ccc;
+        font-size:14px;
+        right:15px;
+        top:15px;
+}
+.loginWindow_close:hover{
+        color:#999;
+        border:1px solid #ccc;
+}
+
+@media (max-width: 480px){
+        .loginWindow{
+                width:auto;
+                left:15px;
+                right:15px;
+                top:50%;
+                height:180px;
+                margin:-90px 0 0 0;
+        }
+        .loginWindow_list{
+                padding:50px 0 0 0;}
+        .loginWindow_list a{
+                font-size:12px;
+        }
+        .loginWindow_list a i{
+                width:30px;
+                height:30px;
+                background-size:150px 18px;
+        }
+        .loginWindow_listIcon_1 i{
+                background-position:-126px 7px;
+        }
+        .loginWindow_listIcon_2 i{
+                background-position:-60px 7px;
+        }
+        .loginWindow_listIcon_3 i{
+                background-position:-93px 7px;
+        }
+        .loginWindow_listIcon_4 i{
+                background-position:6px 7px;
+        }
+        .loginWindow_close{
+                width:24px;
+                height:24px;
+                line-height:22px;
+                font-size:12px;
+                right:10px;
+                top:10px;
+        }
+        .loginWindow_list a{
+                margin:0 10px;}
+        .loginWindow_foot{
+                padding:30px 0 0 0;}
+}
